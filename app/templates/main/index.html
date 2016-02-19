@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div align="center">
+	<h1>User All Blog</h1>
+	
+</div>
+	<ul>
+	{%for each in Bloglist%}
+              <a href="{{ url_for('.post', id=each.id) }}">
+	  	<li>{{each.blog}}time is {{moment(each.timestamp).fromNow()}}
+	{%endfor%}
+	</ul>
+            {% if pagination.has_prev %}
+                <a href="/index?page={{ pagination.prev_num }}">previous</a>
+            {% endif %} 
+         
+            {%- for page in pagination.iter_pages() %}
+   		 {% if page %}
+    			  {% if page != pagination.page %}
+        				<a href="{{ url_for('main.index', page=page) }}">{{ page }}</a>
+      			{% else %}
+       				 <strong>{{ page }}</strong>
+     			 {% endif %}
+   		 {% else %}
+      			<span class=ellipsis>…</span>
+    		{% endif %}
+  	{%- endfor %}
+             
+
+             {% if pagination.has_next %}
+                <a href="/index?page={{ pagination.next_num }}">next</a>
+            {% endif %} 
+	
+
+
+</body>
+</html>

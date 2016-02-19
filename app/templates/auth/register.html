@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div align="center">
+	<h1>REGISTER</h1>
+	{% if message %} {{message}} {% endif %}
+	<form method="post">
+	name:{{form.username}}
+	<br/>
+	passworld:{{form.passworld}}
+	<br/>
+	<input type="submit" value="Submit"/>
+	<input type="reset" value="teset"/>
+	</form>
+</div>
+</body>
+</html>
